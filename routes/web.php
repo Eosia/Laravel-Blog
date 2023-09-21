@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     UserController,
-    ArticleController
+    ArticleController,
+    RegisterController
 };
 
 /*
@@ -16,6 +17,8 @@ use App\Http\Controllers\{
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('register', [RegisterController::class, 'index'])->name('register');
 
 Route::get('/', function () {
     return view('layouts.main');

@@ -5,9 +5,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="{{ $description ?? '' }}">
 
-    <title>Formation Laravel</title>
+    <title>{{ $title ??  ''}}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -51,50 +51,7 @@
 <!-- Page Content -->
 <div class="container">
 
-    <div class="row">
-
-        <div class="col-lg-3">
-            @include('includes.sidebar')
-        </div>
-        <!-- /.col-lg-3 -->
-
-
-        <div class="col-lg-9">
-
-            <div class="card mt-4">
-
-                <div class="card-body">
-                    <h2 class="card-title"><a href="">Laravel c'est top !</a></h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-
-                    <span class="auhtor">Par <a href="">Hamid</a></span> <br>
-                    <span class="time">Il y'a 1 heure</span>
-                </div>
-            </div>
-            <!-- /.card -->
-
-            <div class="card card-outline-secondary my-4">
-                <div class="card-header">
-                    Commentaires
-                </div>
-                <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    <small class="text-muted">Jean le 25 Janvier à 19h02</small>
-                    <hr>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    <small class="text-muted">Paul le 29 Juin à 15h09</small>
-                    <hr>
-
-                    <a href="#" class="btn btn-success">Laisser un commentaire</a>
-                </div>
-            </div>
-            <!-- /.card -->
-
-        </div>
-        <!-- /.col-lg-9 -->
-
-    </div>
+    @yield('content')
 
 </div>
 <!-- /.container -->
