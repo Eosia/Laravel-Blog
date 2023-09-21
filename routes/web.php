@@ -19,6 +19,8 @@ use App\Http\Controllers\{
 */
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+
 
 Route::get('/', function () {
     return view('layouts.main');

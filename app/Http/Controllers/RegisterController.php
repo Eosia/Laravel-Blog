@@ -18,5 +18,14 @@ class RegisterController extends Controller
 
     }
 
+    // Fonction du traitement du formulaire d'inscription
+    public function register() {
+        request()->validate([
+            'name' => 'required|min:3|max:191|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|between:8,36',
+        ]);
+    }
+
 
 }
