@@ -13,6 +13,12 @@
 
         <div class="col-lg-9">
 
+            @if(session('success'))
+                <div class="alert alert-success mt-3">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">
                     Inscription
@@ -23,24 +29,25 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Nom</label>
-                            <input type="text" name="nom" class="form-control">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                             @error('name')
-                                <div class="error">
-                                    {{ $message }}
-                                </div>
+                            <div class="error">{{ $message }}</div>
                             @enderror
+
                         </div>
+
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control">
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}">
                             @error('email')
                             <div class="error">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
+
                         <div class="form-group">
-                            <label for="password">Password</label>
+                            <label for="password">Mot de passe</label>
                             <input type="password" name="password" class="form-control">
                             @error('password')
                             <div class="error">
