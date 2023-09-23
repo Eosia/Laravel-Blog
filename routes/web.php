@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     RegisterController,
     LoginController,
     LogoutController,
+    ForgotController,
 };
 
 /*
@@ -24,10 +25,12 @@ use App\Http\Controllers\{
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 
 //Routes POST
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
 Route::post('login', [LoginController::class, 'login'])->name('post.login');
+Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 
 
 Route::get('/', function () {
