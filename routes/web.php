@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     ArticleController,
     RegisterController,
     LoginController,
+    LogoutController,
 };
 
 /*
@@ -22,6 +23,7 @@ use App\Http\Controllers\{
 // Routes GET
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::get('login', [LoginController::class, 'index'])->name('login');
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 
 //Routes POST
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');

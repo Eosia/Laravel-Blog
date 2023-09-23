@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -11,6 +12,14 @@ class RegisterController extends Controller
     // Affichage de la page d'inscription au site
     public function index()
     {
+        // Vérifiez si l'utilisateur est déjà connecté
+        if (Auth::check()) {
+            $error = "Vous êtes déjà inscrit et connecté";
+            return redirect('/')->withError($error);
+        }
+
+
+
         $data = [
             'title' => 'Inscription',
             'description' => 'Inscription sur le site ' . config('app.name'),

@@ -10,6 +10,12 @@ class LoginController extends Controller
     // Affichage de la page de connexion
     public function index()
     {
+        // Vérifiez si l'utilisateur est déjà connecté
+        if (Auth::check()) {
+            $error = "Vous êtes déjà connecté";
+            return redirect('/')->withError($error);
+        }
+
         $data = [
             'title' => 'Login - ' . config('app.name'),
             'description' => 'Connexion à votre compte - ' . config('app.name'),
@@ -20,6 +26,8 @@ class LoginController extends Controller
     // Fonction du traitement du formulaire de connexion
     public function login() {
 
+
+
         request()->validate([
             'email'=> 'required|email',
             'password' => 'required'
@@ -28,10 +36,12 @@ class LoginController extends Controller
         $remember = request()->has('remember');
 
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')], $remember)) {
-            //dd(Auth::user());
+
             return redirect('/');
         }
         return back()->withError('Mauvais identifiants')->withInput();
+
+
 
     }
 
