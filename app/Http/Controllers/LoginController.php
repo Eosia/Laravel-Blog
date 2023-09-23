@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -19,8 +20,30 @@ class LoginController extends Controller
     // Fonction du traitement du formulaire de connexion
     public function login() {
 
+        request()->validate([
+            'email'=> 'required|email',
+            'password' => 'required'
+        ]);
+
+        $remember = request()->has('remember');
+
+        if (Auth::attempt(['email' => request('email'), 'password' => request('password')], $remember)) {
+            //dd(Auth::user());
+            return redirect('/');
+        }
+        return back()->withError('Mauvais identifiants')->withInput();
+
     }
 
 
 }
+
+
+
+
+
+
+
+
+
 
