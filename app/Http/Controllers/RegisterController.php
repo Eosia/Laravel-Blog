@@ -8,7 +8,7 @@ use App\Models\User;
 class RegisterController extends Controller
 {
 
-    // Formulaire d'inscription au site
+    // Affichage de la page d'inscription au site
     public function index()
     {
         $data = [

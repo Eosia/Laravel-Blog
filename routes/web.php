@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     UserController,
     ArticleController,
-    RegisterController
+    RegisterController,
+    LoginController,
 };
 
 /*
@@ -18,8 +19,13 @@ use App\Http\Controllers\{
 |
 */
 
+// Routes GET
 Route::get('register', [RegisterController::class, 'index'])->name('register');
+Route::get('login', [LoginController::class, 'index'])->name('login');
+
+//Routes POST
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+Route::post('login', [LoginController::class, 'login'])->name('post.login');
 
 
 Route::get('/', function () {
