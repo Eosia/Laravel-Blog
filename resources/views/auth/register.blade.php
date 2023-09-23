@@ -18,6 +18,11 @@
                     {{ session('success') }}
                 </div>
             @endif
+            @if(session('error'))
+                <div class="alert alert-danger mt-3">
+                    {{ session('error') }}
+                </div>
+            @endif
 
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">
