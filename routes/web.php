@@ -35,6 +35,7 @@ Route::post('login', [LoginController::class, 'login'])->name('post.login');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
 
+Route::resource('articles', ArticleController::class);
 
 Route::get('/', function () {
     return view('layouts.main');
