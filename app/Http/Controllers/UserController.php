@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
 
-    public function profile(string $username) {
-        return 'Je suis un utilisateur ' . $username;
+    public function profile(User $user) {
+        return 'Je suis un utilisateur ' . $user->name;
     }
 }

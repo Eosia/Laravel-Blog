@@ -41,7 +41,7 @@ Route::get('/', function () {
     return view('layouts.main');
 });
 
-Route::get('profile/{username}', [UserController::class, 'profile'])
+Route::get('profile/{user}', [UserController::class, 'profile'])
     ->name('user.profile');
 
 Route::resource('article', ArticleController::class);

@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Str;
 
 class ArticleController extends Controller
 {
+
+    protected $perPage = 5;
+
     /**
      * Display a listing of the resource.
      *
@@ -15,11 +19,14 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::get();
+        $articles = Article::orderByDesc('id')->paginate($this->perPage);
 
-        foreach($articles as $article) {
-            dump($article->title);
-        }
+        $data = [
+            'title' => 'Les articles du blog - ' . config('app.name'),
+            'description' => 'Retrouvez tous les articles de ' . config('app.name'),
+            'articles' => $articles,
+        ];
+        return view('article.index', $data);
     }
 
     /**
@@ -49,9 +56,15 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
         //
+        $data = [
+            'title' => $article->title . ' - ' . config('app.name'),
+            'description' => $article->title . ' . ' . Str::words($article->content, 5),
+            'article' => $article,
+        ];
+        return view('article.show', $data);
     }
 
     /**
