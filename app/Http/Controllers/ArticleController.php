@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -14,6 +15,11 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $articles = Article::get();
+
+        foreach($articles as $article) {
+            dump($article->title);
+        }
     }
 
     /**
