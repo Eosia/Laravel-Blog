@@ -30,8 +30,14 @@
                         {{ Str::words($article->content, 10) }}
                     </p>
 
-                    <span class="auhtor">Par <a href="">Hamid</a></span> <br>
-                    <span class="time">{{ $article->created_at->diffForHumans() }}</span>
+                    <span class="auhtor">
+                        Par
+                        <a href="{{ route('user.profile', ['user' => $article->user->id]) }}">
+                            {{ $article->user->name }}
+                        </a>
+                    </span>
+                    <br>
+                    <span class="time">Posté le {{ $article->created_at->diffForHumans() }}</span>
                 </div>
             </div>
             <!-- /.card -->
