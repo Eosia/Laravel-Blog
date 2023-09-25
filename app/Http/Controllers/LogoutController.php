@@ -7,6 +7,12 @@ use Auth;
 
 class LogoutController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+
     // Traitement de la déconnexion
     public function logout() {
         Auth::logout();

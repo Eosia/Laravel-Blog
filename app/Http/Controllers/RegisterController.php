@@ -9,6 +9,11 @@ use Auth;
 class RegisterController extends Controller
 {
 
+    public function __construct() {
+        $this->middleware('guest');
+    }
+
+
     // Affichage de la page d'inscription au site
     public function index()
     {

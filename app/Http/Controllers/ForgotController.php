@@ -9,6 +9,11 @@ use Str, DB;
 
 class ForgotController extends Controller
 {
+    public function __construct() {
+        $this->middleware('guest');
+    }
+
+
     // Formulaire d'oublie de mot de passe
     public function index() {
         $data = [

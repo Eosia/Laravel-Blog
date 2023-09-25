@@ -8,6 +8,12 @@ use App\Models\User;
 
 class ResetController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('guest');
+    }
+
+
     // Formulaire de réinitialisation de mot de passe
     public function index(string $token)
     {
