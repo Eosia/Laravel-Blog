@@ -41,6 +41,11 @@ class ArticleController extends Controller
     public function create()
     {
         //
+        $data = [
+          'title' => $description = 'Ajouter un nouvel article',
+            'description' => $description,
+        ];
+        return view('article.create', $data);
     }
 
     /**

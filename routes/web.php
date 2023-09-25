@@ -35,11 +35,10 @@ Route::post('login', [LoginController::class, 'login'])->name('post.login');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
 
-Route::resource('articles', ArticleController::class);
+Route::resource('articles', ArticleController::class)->except('index');
 
-Route::get('/', function () {
-    return view('layouts.main');
-});
+Route::get('/', [ArticleController::class, 'index']);
+
 
 Route::get('profile/{user}', [UserController::class, 'profile'])
     ->name('user.profile');
