@@ -50,11 +50,10 @@
                             @enderror
                         </div>
 
-                        {{--
                         <div class="form-group">
                             <label for="category">Catégorie</label>
                             <select class="form-control" name="category">
-                                <option value=""></option>
+                                <option value="">Choisir une catégorie</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" @if(old('category') == $category->id) selected @endif >
                                         {{ $category->name }}
@@ -65,7 +64,6 @@
                             <div class="error">{{ $message }}</div>
                             @enderror
                         </div>
-                        --}}
 
                         <button type="submit" class="btn btn-primary">Ajouter</button>
                     </form>
