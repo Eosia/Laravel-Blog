@@ -7,7 +7,7 @@ use App\Models\{
     Article,
     Category,
 };
-use Str;
+use Str, Auth;
 
 class ArticleController extends Controller
 {
@@ -63,6 +63,19 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
+        $article = New Article;
+
+        $article->user_id = Auth::id();
+        $article->category_id = request('category',  null);
+        $article->title = request('title');
+        $article->slug = Str::slug($article->title);
+        $article->content = request('content');
+        $article->save();
+
+        $success = "Article ajouté";
+
+        return back()->withSuccess($success);
+
     }
 
     /**
