@@ -63,8 +63,12 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
-        $article = New Article;
 
+        request()->validate([
+
+        ]);
+
+        $article = New Article;
         $article->user_id = Auth::id();
         $article->category_id = request('category',  null);
         $article->title = request('title');
