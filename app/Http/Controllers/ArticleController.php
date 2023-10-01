@@ -130,9 +130,18 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
         //
+        abort_if(auth()->id() != $article->user_id, 403);
+
+        $data = [
+            'title' => $description = 'Mise à jour de ' . $article->title,
+            'description' => $description,
+            'article' => $article,
+            'categories' => Category::get(),
+        ];
+        return view('article.edit', $data);
     }
 
     /**

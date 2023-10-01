@@ -39,6 +39,15 @@
                     <br>
 
                     <span class="time">Posté le {{ $article->created_at->diffForHumans() }}</span>
+
+                    @if(Auth::check() && Auth::user()->id == $article->user_id)
+                    <div class="author">
+                        <a href="{{ route('articles.edit', ['article' => $article->slug]) }}" class="btn btn-info">
+                            Modifier
+                        </a>
+                    </div>
+                    @endif
+
                 </div>
             </div>
             <!-- /.card -->
