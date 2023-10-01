@@ -8,6 +8,7 @@ use App\Models\{
     Category,
 };
 use Str, Auth;
+use App\Http\Requests\ArticleRequest;
 
 class ArticleController extends Controller
 {
@@ -60,10 +61,16 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         //
 
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+        Auth::user()->articles()->create($validatedData);
+
+
+        /*
         $article = Auth::user()->articles()->create(request()->validate([
             'title' => ['required', 'max:20', 'unique:articles,title'],
             'content' => ['required'],
@@ -72,6 +79,7 @@ class ArticleController extends Controller
 
         $article->category_id = request('category', null);
         $article->save();
+        */
 
         /*
         $article = New Article;

@@ -13,7 +13,7 @@ class Article extends Model
     use HasFactory;
 
     // protected $fillable = ['title', 'user_id', 'slug', 'content', 'category_id'];
-    protected $guarded = ['category_id', 'user_id', 'slug'];
+    protected $guarded = ['user_id', 'slug'];
 
     public function setTitleAttribute($value)
     {
