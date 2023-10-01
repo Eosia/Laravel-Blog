@@ -5,11 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Str;
+
 
 class Article extends Model
 {
     use HasFactory;
 
+    // protected $fillable = ['title', 'user_id', 'slug', 'content', 'category_id'];
+    protected $guarded = ['category_id', 'user_id', 'slug'];
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['title'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
 
     /**
      * Get the route key for the model.

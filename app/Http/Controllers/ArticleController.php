@@ -64,10 +64,16 @@ class ArticleController extends Controller
     {
         //
 
-        request()->validate([
+        $article = Auth::user()->articles()->create(request()->validate([
+            'title' => ['required', 'max:20', 'unique:articles,title'],
+            'content' => ['required'],
+            'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+        ]));
 
-        ]);
+        $article->category_id = request('category', null);
+        $article->save();
 
+        /*
         $article = New Article;
         $article->user_id = Auth::id();
         $article->category_id = request('category',  null);
@@ -75,6 +81,17 @@ class ArticleController extends Controller
         $article->slug = Str::slug($article->title);
         $article->content = request('content');
         $article->save();
+        */
+
+        /*
+        $article = Article::create([
+            'user_id' => auth()->id(),
+            'title' => request('title'),
+            'slug' => Str::slug(request('title')),
+            'content' => request('content'),
+            'category_id' => request('category', null),
+        ]);
+        */
 
         $success = "Article ajouté";
 

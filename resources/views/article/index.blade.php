@@ -37,6 +37,7 @@
                         </a>
                     </span>
                     <br>
+
                     <span class="time">Posté le {{ $article->created_at->diffForHumans() }}</span>
                 </div>
             </div>
