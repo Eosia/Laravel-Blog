@@ -43,9 +43,7 @@
 
                             <label for="content">Contenu</label>
 
-                            <textarea class="form-control" name="content" cols="30" rows="5" placeholder="Contenu de l'article">
-                                {{ old('content', $article->content) }}
-                            </textarea>
+                            <textarea class="form-control" name="content" cols="30" rows="5" placeholder="Contenu de l'article">{{ old('content', $article->content) }}</textarea>
                             @error('content')
                             <div class="error">{{ $message }}</div>
                             @enderror

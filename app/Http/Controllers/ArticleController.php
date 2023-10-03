@@ -9,6 +9,7 @@ use App\Models\{
 };
 use Str, Auth;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Validation\Rule;
 
 class ArticleController extends Controller
 {
@@ -151,9 +152,17 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
         //
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+        $article = Auth::user()->articles()->updateOrCreate(['id' => $article->id], $validatedData);
+
+        $success = "Article modifié";
+
+        return redirect()->route('article.edit', ['article' => $article->slug])->withSuccess($success);
+
     }
 
     /**
