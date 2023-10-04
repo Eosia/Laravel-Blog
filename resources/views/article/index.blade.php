@@ -16,6 +16,12 @@
 
         <div class="col-lg-9">
 
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             @foreach($articles as $article)
 
             <div class="card mt-4">
@@ -45,6 +51,14 @@
                         <a href="{{ route('articles.edit', ['article' => $article->slug]) }}" class="btn btn-info">
                             Modifier
                         </a>
+                        &nbsp
+                        <form style="display: inline" action="{{ route('articles.destroy', ['article' => $article->slug]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger">
+                                Supprimer
+                            </button>
+                        </form>
                     </div>
                     @endif
 
