@@ -121,6 +121,7 @@ class ArticleController extends Controller
             'title' => $article->title . ' - ' . config('app.name'),
             'description' => $article->title . ' . ' . Str::words($article->content, 5),
             'article' => $article,
+            'comments' => $article->comments()->orderByDesc('created_at')->get(),
         ];
         return view('article.show', $data);
     }

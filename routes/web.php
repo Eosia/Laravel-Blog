@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     LogoutController,
     ForgotController,
     ResetController,
+    CommentController,
 };
 
 /*
@@ -34,6 +35,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('post.reg
 Route::post('login', [LoginController::class, 'login'])->name('post.login');
 Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
+Route::post('comment/{article}', [CommentController::class, 'store'])->name('post.comment');
 
 Route::resource('articles', ArticleController::class)->except('index');
 
