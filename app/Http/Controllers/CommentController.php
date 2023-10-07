@@ -8,6 +8,7 @@ use App\Models\{
     Article,
 };
 use App\Http\Requests\CommentRequest;
+use App\Notifications\NewComment;
 
 class CommentController extends Controller
 {
