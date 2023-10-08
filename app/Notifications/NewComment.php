@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 
 use App\Models\Comment;
 
-class newComment extends Notification implements ShouldQueue
+class NewComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
