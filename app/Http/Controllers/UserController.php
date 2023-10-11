@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
 
 class UserController extends Controller
 {
@@ -28,6 +30,13 @@ class UserController extends Controller
 
     public function store() {
 
+        $user = auth()->user();
+
+        request()->validate([
+            'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'avatar' => ['sometimes', 'nullable', 'file', 'image', 'mimes:jpeg,png'],
+        ]);
     }
 
 
