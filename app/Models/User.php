@@ -43,6 +43,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function avatar() {
+        return $this->hasOne(Avatar::class);
+    }
+
     public function articles() {
         return $this->hasMany(Article::class);
     }
