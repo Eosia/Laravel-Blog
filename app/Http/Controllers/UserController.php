@@ -34,6 +34,32 @@ class UserController extends Controller
         return view('user.edit', $data);
     }
 
+    // reset du mot de passe
+    public function password() {
+        $data = [
+            'title' => $description = 'Modifier mon mot de passe',
+            'description' => $description,
+            'user' => auth()->user(),
+        ];
+        return view('user.password', $data);
+    }
+
+    // mise à jour du mot de passe
+    public function updatePassword() {
+        request()->validate([
+            'current' => 'required|password',
+            'password' => 'required|between:4,32|confirmed',
+        ]);
+
+        $user = auth()->user();
+        $user->password = bcrypt(request('password'));
+        $user->save();
+
+        $success = 'Mot de passe mis à jour';
+
+        return back()->withSuccess($success);
+    }
+
     public function store()
     {
 

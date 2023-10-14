@@ -30,6 +30,7 @@ Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
 Route::get('user/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::get('user/password', [UserController::class, 'password'])->name('user.password');
 
 //Routes POST
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
@@ -38,6 +39,7 @@ Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
 Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
 Route::post('comment/{article}', [CommentController::class, 'store'])->name('post.comment');
 Route::post('user/store', [UserController::class, 'store'])->name('post.user');
+Route::post ('password', [UserController::class, 'updatePassword'])->name('update.password');
 
 Route::resource('articles', ArticleController::class)->except('index');
 

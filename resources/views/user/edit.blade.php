@@ -66,7 +66,7 @@
                     </form>
 
                     <p class="mt-5">
-                        <a href="">
+                        <a href="{{ route('user.password') }}">
                             Modifier mon mot de passe
                         </a>
                     </p>
