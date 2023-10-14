@@ -71,6 +71,16 @@
                         </a>
                     </p>
 
+                    <div class="text-right">
+                        <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="alert alert-danger">
+                                Supprimer mon compte
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
             <!-- /.card -->

@@ -41,6 +41,8 @@ Route::post('comment/{article}', [CommentController::class, 'store'])->name('pos
 Route::post('user/store', [UserController::class, 'store'])->name('post.user');
 Route::post ('password', [UserController::class, 'updatePassword'])->name('update.password');
 
+Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
 Route::resource('articles', ArticleController::class)->except('index');
 
 Route::get('/', [ArticleController::class, 'index']);

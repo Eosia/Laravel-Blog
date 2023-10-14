@@ -17,7 +17,7 @@
         <div class="col-lg-9">
 
             @if(session('success'))
-                <div class="alert alert-success">
+                <div class="alert alert-success my-5">
                     {{ session('success') }}
                 </div>
             @endif

@@ -126,5 +126,14 @@ class UserController extends Controller
 
     }
 
+    public function destroy(User $user) {
+        abort_if($user->id != auth()->id(), 403);
+        Storage::deleteDirectory('avatars/' . $user->id);
+        $user->delete();
+
+        $success= 'Votre compte a été supprimé';
+        return redirect('/')->withSuccess($success);
+    }
+
 
 }
