@@ -20,7 +20,18 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        return 'Je suis un utilisateur ' . $user->name;
+
+        $articles = $user->articles()->withCount('comments')->latest()->paginate(5);
+
+        $data = [
+            'title' => 'Profil de ' . $user->name,
+            'description' => $user->name . ' est inscrit depuis le ' . $user->created_at->isoFormat('LL') .
+                ' et a posté ' . $user->articles()->count() . ' Article(s)',
+            'user' => $user,
+            'articles' => $articles,
+        ];
+
+        return view('user.profile', $data);
     }
 
     public function edit()
@@ -71,7 +82,7 @@ class UserController extends Controller
                 request()->validate([
                     'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
                     'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
-                    'avatar' => ['sometimes', 'nullable', 'file', 'image', 'mimes:jpeg,png', 'dimensions:min_width=200,min_height=200'],
+                    'avatar' => ['sometimes', 'nullable', 'file', 'image', 'mimes:jpeg,jpg,png', 'dimensions:min_width=200,min_height=200'],
                 ]));
 
             if (request()->hasFile('avatar') && request()->file('avatar')->isValid()) {
