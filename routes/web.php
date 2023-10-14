@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     ForgotController,
     ResetController,
     CommentController,
+    CategoryController,
 };
 
 /*
@@ -31,6 +32,7 @@ Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
 Route::get('user/edit', [UserController::class, 'edit'])->name('user.edit');
 Route::get('user/password', [UserController::class, 'password'])->name('user.password');
+Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
 //Routes POST
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
